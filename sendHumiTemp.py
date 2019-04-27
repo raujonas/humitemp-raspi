@@ -1,9 +1,18 @@
 import time
 import Adafruit_DHT
 import json
+import os
+import sys
 
 pin = 4
 sensor = Adafruit_DHT.DHT22
+hostname = sys.argv[1]
+response = os.system("ping -c 1 " + hostname)
+
+if response == 0:
+ print hostname, 'is up!'
+else:
+ print hostname, 'is down!'
 
 while True:
   humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
