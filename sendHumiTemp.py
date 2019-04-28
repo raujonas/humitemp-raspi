@@ -9,6 +9,7 @@ import datetime
 pin = 4
 sensor = Adafruit_DHT.DHT22
 hostname = sys.argv[1]
+headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
 
 #response = os.system("ping -c 1 " + hostname)
 
@@ -31,8 +32,8 @@ while True:
     json_data = json.dumps(data)
     print json_data
 
-    r = requests.post('http://' + hostname + ':80/post', data=json_data)
-#    print r.content
+    r = requests.put('http://' + hostname + ':8080/humitemp/latest', data=json_data, headers=headers)
+    print r.content
 
     time.sleep(15)
   else:
