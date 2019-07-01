@@ -33,9 +33,10 @@ while True:
     print json_data
 
     r = requests.put('http://' + hostname + ':8080/humitemp/latest', data=json_data, headers=headers)
-    print r.content
+#    print r.content
 
     time.sleep(15)
   else:
     print('Failed to get reading. Try again!')
-    sys.exit(1) 
+#    sys.exit(1) 
+    time.sleep(5)
