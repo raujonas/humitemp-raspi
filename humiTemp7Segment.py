@@ -37,7 +37,12 @@ def humiTemp(seg):
 #    seg.text = ('{0:0.1f} CEL'.format(temperature))
 #    time.sleep(5)
 #    seg.text = ('{0:0.1f} PER'.format(humidity))
+    seg.text = '--------'
+    time.sleep(0.1)
     seg.text = ('{0:0.1f}  {1:0.1f}'.format(temperature, humidity))
+    time.sleep(15)
+  else:
+    humiTemp(seg)
 
 def main():
   serial = spi(port=0, device=0, gpio=noop())
@@ -49,7 +54,6 @@ def main():
 #    time.sleep(3)
 #    clock(seg)
     humiTemp(seg)
-    time.sleep(15)
 
 if __name__ == '__main__':
   main()
